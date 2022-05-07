@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+
+		<title>Particules</title>
+		<script src="gl-matrix-min.js"></script>
+		<script src="utility.js"></script>
+		<script src="particles3d.js"></script>	
+		<script src="flowField.js"></script>
+		
+		<link type="text/css" rel="stylesheet" href="main.css">
+
+	</head>
+	<body onload="initWebGL()">
+		<!--<h1>3D Vector Fields</h1>-->
+		<div class="container">
+			<div id="canvas">
+				<canvas id="webgl-canvas" width="100" height="100">
+					not supported
+				</canvas>
+			</div>
+			<div id="introduction">
+				<p>
+					Ce projet permet la visualisation d'un grand nombre de particule et de la force de gravitation qui peut s'appliquer entre elles (via le calcul du centre de masse du système de particule).
+					Ce projet est realisé en webgl et fait grande utilisation de la technique du "render to texture".
+					<br><br>
+					Les différents paramètres pouvant être modifiée son présenté dans l'interface ci-dessous.
+					<br><br>
+					Lorsque la gravité est enclenché, vous pouvez également presser avec la souris sur le canevas pour que la gravité s'applique sur le pointeur de la souris plutôt que sur le centre de masse du système.
+				</p>
+			</div>
+			<div id="overlay">
+				<div id="line2">Taille des particules = <label id="pSize">3</label></div>
+				<div id="line3">1 <input type="range" id="pSizeSlider" step="1" min="1" max="6" value="3" onChange="changeParticleSize(value);">6 </div>
+				<div><input type="checkbox" id="flowField" onclick="toggleFlowField()">Enable flow field</div>
+				<!--<div><input type="checkbox" id="gravity" onclick="toggleGravity()">Enable gravity</div>-->
+				<div id="line4"> Nombre de particules:
+					<button class="more" onclick="changeParticlesCount(2)">++</button>
+					<button class="less" onclick="changeParticlesCount(0.5)">--</button>
+				</div>
+				<!-- hardcoded value for the display, yes it's dirty, but eh -->
+				<div> Simulation de <span id="particleCount">191,406</span> particules à <span id="FPS">___</span> FPS.</div>
+				<div><button id="fullscreen_mode" onclick="fullscreen()">Fullscreen</button></div>
+			</div>
+			<div id="debug" style="position:absolute;top:500px;left:750px;"></div>
+		</div>
+		
+		<footer>Tripiciano Tania, Flück Thierry, Wermeille Thibault, Meyer Luca - Semestre d'Automne 2021 - (Original by - Vorpe Fabien - 12.05.2019)</footer>
+	</body>
+</html>
